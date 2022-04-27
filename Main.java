@@ -23,8 +23,7 @@ public class Main {
     }
 
     public static BigDecimal getHighDegree(int a, int b, double c) {
-        int degree = (int) c;
-        double out = 0;
+        double out = a;
         if (b == 1) {
             return BigDecimal.valueOf((int)Math.pow(a, c));
         }
@@ -34,7 +33,7 @@ public class Main {
 
         if (b > 1) {
             for (int i = 1; i < b; i++) {
-                out = Math.pow(c, degree);
+                out = Math.pow(out, c);
             }
             double result = Math.pow(a, out);
             BigDecimal j = BigDecimal.valueOf(result);

@@ -1,6 +1,8 @@
 package com.company;
+import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.regex.*;
 import java.util.Scanner;
@@ -20,15 +22,24 @@ public class Main {
 
     }
 
-    public static BigInteger getHighDegree(int a, int b, double c){
-        int degree = (int)c;
-        for(int i = 0; i < b; i++){
-            c = Math.pow(c, degree);
+    public static BigDecimal getHighDegree(int a, int b, double c) {
+        int degree = (int) c;
+        double out = 0;
+        if (b == 1) {
+            return BigDecimal.valueOf((int)Math.pow(a, c));
         }
-        BigInteger c1 = BigInteger.valueOf((long)c);
-        BigInteger a1 = BigInteger.valueOf(a);
-        BigInteger result = c1.multiply(a1);
+        if (b == 0) {
+            return BigDecimal.valueOf(a);
+        }
 
-        return result;
+        if (b > 1) {
+            for (int i = 1; i < b; i++) {
+                out = Math.pow(c, degree);
+            }
+            double result = Math.pow(a, out);
+            BigDecimal j = BigDecimal.valueOf(result);
+            return j;
+        }
+        return null;
     }
 }
